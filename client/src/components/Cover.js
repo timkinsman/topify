@@ -15,13 +15,6 @@ const Cover = () => {
             <h1 className="ui header">Topify</h1>
             <h1 className="ui header">Topify</h1>
             <h1 className="ui header">Topify</h1>
-            <h1 className="ui header">Topify</h1>
-            <h1 className="ui header">Topify</h1>
-            <h1 className="ui header">Topify</h1>
-            <h1 className="ui header">Topify</h1>
-            <h1 className="ui header">Topify</h1>
-            <h1 className="ui header">Topify</h1>
-            <h1 className="ui header">Topify</h1>
         </div>
     )
 }
