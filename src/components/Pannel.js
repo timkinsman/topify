@@ -29,36 +29,14 @@ const Pannel = props => {
     }, []);
 
     return (
-        <div style={{margin: '10px 0', background: props.background}}>
+        <div style={{padding: '50px 0'}}>
             <div className="ui container">
                 <div className="ui grid">
-                    {props.type === "artists" && (
-                        <div className="two column row">
-                            <div className="column">
-                                <h4>
-                                    {`Your #1 ${props.type.substring(0, props.type.length - 1)}!`.toUpperCase()}
-                                </h4>
-                                <h4>{name}</h4>
-                            </div>
-                            <div className="column">
-                                <img src={imageURL} alt={name} />
-                            </div>
+                    <div className="four column row">
+                        <div className="column">
+                            <h1>{name}</h1>
+                            <img src={imageURL} alt={name} />
                         </div>
-                    )}
-                    {props.type === "tracks" && (
-                        <div className="two column row">
-                            <div className="column">
-                                <img src={imageURL} alt={name} />
-                            </div>
-                            <div className="column">
-                                <h4>
-                                    {`Your #1 ${props.type.substring(0, props.type.length - 1)}!`.toUpperCase()}
-                                </h4>
-                                <h4>{name}</h4>
-                            </div>
-                        </div>
-                    )}
-                    <div className="three column row">
                         <PannelList token={props.token} type={props.type} timeRange="long_term" />
                         <PannelList token={props.token} type={props.type} timeRange="medium_term" />
                         <PannelList token={props.token} type={props.type} timeRange="short_term" />

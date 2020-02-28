@@ -18,7 +18,7 @@ const Cover = props => {
     }, []);
 
     return (
-        <div style={{height: '101vh'}}>
+        <div style={{height: '100vh'}}>
             <div className="ui container">
                 {!props.token && (
                     <p style={{alignSelf: 'center'}}>log in</p>

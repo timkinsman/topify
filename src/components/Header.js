@@ -5,9 +5,7 @@ const Header = props => {
     return (
         <div className="ui fixed inverted menu">
             <div className="ui container">
-                <p className="header item">
-                    Topify
-                </p>
+                <img src="/" className="item" alt='img' />
                 <div className="right menu">
                     {!props.token && (
                         <a className="item" href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(

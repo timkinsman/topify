@@ -28,8 +28,8 @@ const App = () => {
       {token && (
         <React.Fragment>
           <Cover token={token} />
-          <Pannel token={token} type="artists" background="aquamarine" />
-          <Pannel token={token} type="tracks"  background="mediumturquoise" />
+            <Pannel token={token} type="artists" />
+            <Pannel token={token} type="tracks" />
         </React.Fragment>
       )}
       <Footer />
