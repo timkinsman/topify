@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import './Cover.css'
 import spotify from '../apis/spotify';
 
 const Cover = props => {
@@ -14,21 +13,17 @@ const Cover = props => {
                 }
                 })
                 setDisplayName(response.data.display_name);
-
             })(props.token)
         }
     }, []);
 
     return (
-        <div className="ui main text container cover">
+        <div className="ui container" style={{height: '100vh'}}>
             {!props.token && (
-                <h1 className="ui header text">EXPLORE YOUR TOP PICKS!</h1>
+                <p>log in</p>
             )}
             {props.token && (
-                <div className="text">
-                    <h1 className="ui header">WELCOME TO YOUR TOP PICKS!</h1>
-                    <h3>{displayName}</h3>
-                </div>
+                <p>{displayName}</p>
             )}
         </div>
     )

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import hash from "../hash";
-import Header from './Header';
 import Cover from './Cover';
 import Footer from './Footer';
+import Header from './Header';
+import Pannel from './Pannel';
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -25,7 +26,11 @@ const App = () => {
         <Cover token={token} />
       )}
       {token && (
-        <Cover token={token} />
+        <React.Fragment>
+          <Cover token={token} />
+          <Pannel token={token} type="artists" />
+          <Pannel token={token} type="tracks" />
+        </React.Fragment>
       )}
       <Footer />
     </React.Fragment>
