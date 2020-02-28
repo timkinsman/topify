@@ -21,9 +21,19 @@ const PannelList = props => {
         }
     }, []);
 
+    const renderTime = (timeRange) => {
+        if(timeRange === "long_term"){
+            return <h4>All Time</h4>;
+        }else if(timeRange === "medium_term"){
+            return <h4>6 Months</h4>;
+        }else if(timeRange === "short_term"){
+            return <h4>4 Weeks</h4>
+        }
+    }
+
     return (
         <div className="column">
-            <h4>{props.timeRange}</h4>
+            {renderTime(props.timeRange)}
             {data.map(data => <p key={data.id}>{data.name}</p>)}
         </div>
     )
