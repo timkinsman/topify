@@ -21,12 +21,11 @@ const App = () => {
         token={token}
         onClickEvent={() => setToken(null)}
       />
-      <Cover token={token} />
+      {!token && (
+        <Cover token={token} />
+      )}
       {token && (
-        <React.Fragment>
-          <Cover token={token} />
-          <Cover token={token} />
-        </React.Fragment>
+        <Cover token={token} />
       )}
       <Footer />
     </React.Fragment>
@@ -34,21 +33,3 @@ const App = () => {
 }
 
 export default App;
-
-/*getCurrentlyPlaying(token) {
-    // Make a call using the token
-    $.ajax({
-      url: "https://api.spotify.com/v1/me/player",
-      type: "GET",
-      beforeSend: xhr => {
-        xhr.setRequestHeader("Authorization", "Bearer " + token);
-      },
-      success: data => {
-        this.setState({
-          item: data.item,
-          is_playing: data.is_playing,
-          progress_ms: data.progress_ms
-        });
-      }
-    });
-  }*/
