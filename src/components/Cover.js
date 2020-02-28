@@ -1,33 +1,8 @@
-import React, {useState, useEffect} from 'react';
-import spotify from '../apis/spotify';
+import React from 'react';
 
-const Cover = props => {
-    const [displayName, setDisplayName] = useState(null);
-
-    useEffect(() => {
-        if(props.token){
-            (async (token) => {
-                const response = await spotify.get('/me', {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-                })
-                setDisplayName(response.data.display_name);
-            })(props.token)
-        }
-    }, []);
-
+const Cover = () => {
     return (
-        <div style={{height: '100vh'}}>
-            <div className="ui container">
-                {!props.token && (
-                    <p style={{alignSelf: 'center'}}>log in</p>
-                )}
-                {props.token && (
-                    <p style={{alignSelf: 'center'}}>{displayName}</p>
-                )}
-            </div>
-        </div>
+        <div style={{height: '100vh'}}></div>
     )
 }
 

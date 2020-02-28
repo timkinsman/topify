@@ -3,8 +3,8 @@ import PannelList from './PannelList';
 import spotify from '../apis/spotify';
 
 const Pannel = props => {
-    const [name, setName] = useState(null);
-    const [imageURL, setImageURL] = useState(null);
+    const [name, setName] = useState();
+    const [imageURL, setImageURL] = useState();
 
     useEffect(() => {
         if(props.token){
@@ -18,7 +18,7 @@ const Pannel = props => {
                     time_range: 'long_term'
                 }
                 })
-                setName(response.data.items[0].name);
+                setName(response.data.items[0].name.toLowerCase());
                 if(props.type === 'artists'){
                     setImageURL(response.data.items[0].images[0].url);
                 }else if(props.type === 'tracks'){
@@ -34,7 +34,8 @@ const Pannel = props => {
                 <div className="ui grid">
                     <div className="four column row">
                         <div className="column">
-                            <h1>{name}</h1>
+                            <h4>top {props.type}</h4>
+                            <p>{name}</p>
                             <img src={imageURL} alt={name} />
                         </div>
                         <PannelList token={props.token} type={props.type} timeRange="long_term" />

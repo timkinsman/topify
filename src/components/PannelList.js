@@ -23,18 +23,18 @@ const PannelList = props => {
 
     const renderTime = (timeRange) => {
         if(timeRange === "long_term"){
-            return <h4>All Time</h4>;
+            return <h4>all time</h4>;
         }else if(timeRange === "medium_term"){
-            return <h4>6 Months</h4>;
+            return <h4>6 months</h4>;
         }else if(timeRange === "short_term"){
-            return <h4>4 Weeks</h4>
+            return <h4>4 weeks</h4>
         }
     }
 
     return (
         <div className="column">
             {renderTime(props.timeRange)}
-            {data.map(data => <p key={data.id}>{data.name}</p>)}
+            {data.map(data => <p key={data.id}>{data.name.toLowerCase()}</p>)}
         </div>
     )
 }

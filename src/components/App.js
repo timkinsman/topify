@@ -6,7 +6,7 @@ import Header from './Header';
 import Pannel from './Pannel';
 
 const App = () => {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState();
 
   useEffect(() => {
     let _token = hash.access_token;
@@ -22,16 +22,15 @@ const App = () => {
         token={token}
         onClickEvent={() => setToken(null)}
       />
-      {!token && (
-        <Cover token={token} />
-      )}
+      <Cover />
+
       {token && (
         <React.Fragment>
-          <Cover token={token} />
-            <Pannel token={token} type="artists" />
-            <Pannel token={token} type="tracks" />
+          <Pannel token={token} type="artists" />
+          <Pannel token={token} type="tracks" />
         </React.Fragment>
       )}
+
       <Footer />
     </React.Fragment>
   );
