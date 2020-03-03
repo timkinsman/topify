@@ -18,6 +18,8 @@ const App = () => {
 
     if(localStorage.getItem("token")){
       setToken(localStorage.getItem("token"));
+    }else{
+      setToken(null);
     }
   }, []);
 

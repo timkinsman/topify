@@ -35,7 +35,7 @@ const Pannel = props => {
                 <div className="ui grid">
                     <div className="four column row">
                         <div className="column">
-                            <h3 className="ui dividing header">Top {props.type}</h3>
+                            <h3 className="ui dividing header">Top {props.type.replace(/^\w/, c => c.toUpperCase())}</h3>
                             <img src={imageURL} alt={name} className="ui medium rounded image" />
                         </div>
                         <PannelList token={props.token} type={props.type} timeRange="long_term" />
