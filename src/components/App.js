@@ -12,7 +12,12 @@ const App = () => {
     let _token = hash.access_token;
 
     if (_token) {
-      setToken(_token)
+      localStorage.setItem("token", _token);
+      setToken(_token);
+    }
+
+    if(localStorage.getItem("token")){
+      setToken(localStorage.getItem("token"));
     }
   }, []);
 
@@ -20,7 +25,10 @@ const App = () => {
     <React.Fragment>
       <Header 
         token={token}
-        onClickEvent={() => setToken(null)}
+        onClickEvent={() => {
+          localStorage.removeItem("token");
+          setToken(null);
+        }}
       />
       <Cover />
 

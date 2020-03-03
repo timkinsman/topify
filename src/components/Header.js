@@ -4,6 +4,7 @@ import spotify from '../apis/spotify';
 
 const Header = props => {
     const [displayName, setDisplayName] = useState();
+    const [externalUrls, setExternalUrls] = useState();
 
     useEffect(() => {
         if(props.token){
@@ -13,7 +14,8 @@ const Header = props => {
                     Authorization: `Bearer ${token}`
                 }
                 })
-                setDisplayName(response.data.display_name.toLowerCase());
+                setDisplayName(response.data.display_name);
+                setExternalUrls(response.data.external_urls.spotify);
             })(props.token)
         }
     });
@@ -26,12 +28,12 @@ const Header = props => {
                     {!props.token && (
                         <a className="item" href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
                             "%20"
-                          )}&response_type=token&show_dialog=true`}>log in</a>  
+                          )}&response_type=token&show_dialog=true`}>Log In</a>  
                     )}
                     {props.token && (
                         <React.Fragment>
-                            <a className="item">{displayName}</a>
-                            <a className="item" onClick={props.onClickEvent}>log out</a>
+                            <a className="item" href={externalUrls} target="_blank">{displayName}</a>
+                            <a className="item" onClick={props.onClickEvent}>Log Out</a>
                         </React.Fragment>
                     )}
                 </div>
