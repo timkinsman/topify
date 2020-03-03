@@ -41,7 +41,7 @@ const PannelList = props => {
                             <img src={data.images[0].url} alt={data.name} />
                         </div>
                         <div className="content">
-                            <a className="author" href={data.external_urls.spotify} target="_blank">{data.name}</a>
+                            <a className="author" href={data.external_urls.spotify} target="_blank" rel="noopener noreferrer">{data.name}</a>
                             <div className="text">
                                 -
                             </div>
@@ -62,7 +62,7 @@ const PannelList = props => {
                             <img src={data.album.images[0].url} alt={data.name} />
                         </div>
                         <div className="content">
-                            <a className="author" href={data.external_urls.spotify} target="_blank">{data.name}</a>
+                            <a className="author" href={data.external_urls.spotify} target="_blank" rel="noopener noreferrer">{data.name}</a>
                             <div className="text">
                                 {data.artists[0].name}
                             </div>

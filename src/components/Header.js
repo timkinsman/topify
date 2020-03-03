@@ -32,8 +32,8 @@ const Header = props => {
                     )}
                     {props.token && (
                         <React.Fragment>
-                            <a className="item" href={externalUrls} target="_blank">{displayName}</a>
-                            <a className="item" onClick={props.onClickEvent}>Log Out</a>
+                            <a className="item" href={externalUrls} target="_blank" rel="noopener noreferrer">{displayName}</a>
+                            <a className="item" onClick={props.onClickEvent} href="/">Log Out</a>
                         </React.Fragment>
                     )}
                 </div>

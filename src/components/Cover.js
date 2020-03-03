@@ -16,7 +16,6 @@ const Cover = () => {
                 <h3>Topify</h3>
                 <h3>Topify</h3>
                 <h3>Topify</h3>
-                <h3>///////////////////////////////</h3>
             </div>
         </div>
     )
