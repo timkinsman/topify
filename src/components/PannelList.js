@@ -31,40 +31,21 @@ const PannelList = props => {
         }
     }
 
-    const renderArtists = () => {
+    const renderData = () => {
         return (
             <div className="ui comments">
                 {renderTime(props.timeRange)}
                 {data.map((data) =>
                     <div className="comment" key={data.id}>
                         <div className="avatar">
-                            <img src={data.images[0].url} alt={data.name} />
+                            {props.type === "artists" && <img src={data.images[0].url} alt={data.name} />}
+                            {props.type === "tracks" && <img src={data.album.images[0].url} alt={data.name} />}
                         </div>
                         <div className="content">
                             <a className="author" href={data.external_urls.spotify} target="_blank" rel="noopener noreferrer">{data.name}</a>
                             <div className="text">
-                                -
-                            </div>
-                        </div>
-                    </div>
-                )}
-            </div>
-        )
-    }
-
-    const renderTracks = () => {
-        return (
-            <div className="ui comments">
-                {renderTime(props.timeRange)}
-                {data.map((data) =>
-                    <div className="comment" key={data.id}>
-                        <div className="avatar">
-                            <img src={data.album.images[0].url} alt={data.name} />
-                        </div>
-                        <div className="content">
-                            <a className="author" href={data.external_urls.spotify} target="_blank" rel="noopener noreferrer">{data.name}</a>
-                            <div className="text">
-                                {data.artists[0].name}
+                                {props.type === "artists" && "-"}
+                                {props.type === "tracks" && data.artists[0].name}
                             </div>
                         </div>
                     </div>
@@ -75,8 +56,8 @@ const PannelList = props => {
 
     return (
         <div className="column">
-            {props.type === "artists" && renderArtists()}
-            {props.type === "tracks" && renderTracks()}
+            {props.type === "artists" && renderData()}
+            {props.type === "tracks" && renderData()}
         </div>
     )
 }

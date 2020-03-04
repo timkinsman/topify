@@ -18,7 +18,7 @@ const Header = props => {
                 setExternalUrls(response.data.external_urls.spotify);
             })(props.token)
         }
-    });
+    }, [props.token]);
 
     return (
         <div className="ui fixed inverted menu">

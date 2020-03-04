@@ -30,7 +30,7 @@ const Pannel = props => {
     }, []);
 
     return (
-        <div style={{padding: '50px 0'}}>
+        <div style={{paddingBottom: '50px'}}>
             <div className="ui container">   
                 <div className="ui grid">
                     <div className="four column row">
