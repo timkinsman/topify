@@ -12,15 +12,26 @@ const App = () => {
     let _token = hash.access_token;
 
     if (_token) {
-      localStorage.setItem("token", _token);
-      setToken(_token);
+      const now = new Date()
+      const item = {
+        value: _token,
+        expiry: now.getTime() + (60 * 1000)
+      }
+      localStorage.setItem("token", JSON.stringify(item));
     }
 
-    if(localStorage.getItem("token")){
-      setToken(localStorage.getItem("token"));
-    }else{
-      setToken(null);
+    const itemStr = localStorage.getItem("token")
+    if (!itemStr) {
+      return 
     }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+    if(now.getTime() > item.expiry){
+      localStorage.removeItem("token")
+      return 
+    }
+
+    setToken(item.value);
   }, []);
 
   return (

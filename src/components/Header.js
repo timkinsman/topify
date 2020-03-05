@@ -26,9 +26,9 @@ const Header = props => {
                 <img src="/" className="item" alt='img' />
                 <div className="right menu">
                     {!props.token && (
-                        <a className="item" href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
+                        <a className="item" href={`${authEndpoint}?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=${scopes.join(
                             "%20"
-                          )}&response_type=token&show_dialog=true`}>Log In</a>  
+                          )}&show_dialog=true&expires_in=3600`}>Log In</a>  
                     )}
                     {props.token && (
                         <React.Fragment>
