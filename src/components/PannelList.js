@@ -13,8 +13,7 @@ const PannelList = props => {
                 },
                 params: {
                     limit: 10,
-                    time_range: props.timeRange,
-                    offset: 20
+                    time_range: props.timeRange
                 }
                 })
                 console.log(response.data)
