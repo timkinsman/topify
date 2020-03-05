@@ -13,9 +13,11 @@ const PannelList = props => {
                 },
                 params: {
                     limit: 10,
-                    time_range: props.timeRange
+                    time_range: props.timeRange,
+                    offset: 20
                 }
                 })
+                console.log(response.data)
                 setData(response.data.items);
             })(props.token)
         }
@@ -38,7 +40,7 @@ const PannelList = props => {
                 {data.map((data) =>
                     <div className="comment" key={data.id}>
                         <div className="avatar">
-                            {props.type === "artists" && <img src={data.images[0].url} alt={data.name} />}
+                            { props.type === "artists" && <img src={data.images[0].url} alt={data.name} style={{width: '35px', height: '35px', objectFit: 'cover'}} />}
                             {props.type === "tracks" && <img src={data.album.images[0].url} alt={data.name} />}
                         </div>
                         <div className="content">
