@@ -15,7 +15,7 @@ const App = () => {
       const now = new Date()
       const item = {
         value: _token,
-        expiry: now.getTime() + (60 * 1000)
+        expiry: now.getTime() + (60 * 60 * 1000)
       }
       localStorage.setItem("token", JSON.stringify(item));
     }
