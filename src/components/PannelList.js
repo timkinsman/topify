@@ -16,7 +16,6 @@ const PannelList = props => {
                     time_range: props.timeRange
                 }
                 })
-                console.log(response.data)
                 setData(response.data.items);
             })(props.token)
         }
