@@ -27,8 +27,12 @@ const PannelList = props => {
         }else if(timeRange === "medium_term"){
             return <h3 className="ui dividing header">6 Months</h3>;
         }else if(timeRange === "short_term"){
-            return <h3 className="ui dividing header">4 Weeks</h3>
+            return <h3 className="ui dividing header">4 Weeks</h3>;
         }
+    }
+
+    const toTitleCase = (text) => {
+        return text ? text.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ').replace("R&b", "R&B") : "-";
     }
 
     const renderData = () => {
@@ -38,14 +42,13 @@ const PannelList = props => {
                 {data.map((data) =>
                     <div className="comment" key={data.id}>
                         <div className="avatar">
-                            { props.type === "artists" && <img src={data.images[0].url} alt={data.name} style={{width: '35px', height: '35px', objectFit: 'cover'}} />}
+                            {props.type === "artists" && <img src={data.images[0].url} alt={data.name} style={{width: '35px', height: '35px', objectFit: 'cover'}} />}
                             {props.type === "tracks" && <img src={data.album.images[0].url} alt={data.name} />}
                         </div>
                         <div className="content">
                             <a className="author" href={data.external_urls.spotify} target="_blank" rel="noopener noreferrer">{data.name}</a>
                             <div className="text">
-                                {props.type === "artists" && "-"}
-                                {props.type === "tracks" && data.artists[0].name}
+                                {props.type === "artists" ? toTitleCase(data.genres[0]) : data.artists[0].name}
                             </div>
                         </div>
                     </div>
