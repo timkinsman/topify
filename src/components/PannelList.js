@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import spotify from '../apis/spotify';
+import CreateButton from './CreateButton';
 
 const PannelList = props => {
     const [data, setData] = useState([]);
@@ -61,6 +62,7 @@ const PannelList = props => {
         <div className="column">
             {props.type === "artists" && renderData()}
             {props.type === "tracks" && renderData()}
+            {props.type === "tracks" && <CreateButton token={props.token} timeRange={props.timeRange} />}
         </div>
     )
 }
