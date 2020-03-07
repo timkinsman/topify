@@ -1,7 +1,23 @@
 import React from 'react';
 import spotify from '../apis/spotify';
+import { render } from 'react-dom';
 
 const CreateButton = props => {
+    const renderName = (timeRange) => {
+        const now = new Date();
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const month = monthNames[now.getMonth()]
+        const year = now.getYear() + 1900;
+
+        if(timeRange === "long_term"){
+            return `All Time / ${month} ${year}`
+        }else if(timeRange === "medium_term"){
+            return `6 Months / ${month} ${year}`
+        }else if(timeRange === "short_term"){
+            return `4 Weeks / ${month} ${year}`
+        }
+    }
+
     return (
         <button onClick={() => {
             if(props.token){
@@ -14,7 +30,7 @@ const CreateButton = props => {
                     })
                     const user_id = response.data.id;
 
-                    response = await spotify.post(`/users/${user_id}/playlists`, {name: `top_tracks_${props.timeRange}`,
+                    response = await spotify.post(`/users/${user_id}/playlists`, {name: `Top-50 Tracks / ${renderName(props.timeRange)}`,
                     description: 'https://topify-app.herokuapp.com/'}, {
                         headers: {
                             Authorization: `Bearer ${token}`

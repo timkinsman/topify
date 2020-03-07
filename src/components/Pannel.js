@@ -18,7 +18,6 @@ const Pannel = props => {
                     time_range: 'long_term'
                 }
                 })
-                console.log(response.data)
                 setName(response.data.items[0].name.toLowerCase());
                 if(props.type === 'artists'){
                     setImageURL(response.data.items[0].images[0].url);
