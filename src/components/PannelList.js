@@ -22,13 +22,13 @@ const PannelList = props => {
     }, []);
 
     const renderTime = (timeRange) => {
-        if(timeRange === "long_term"){
-            return <h3 className="ui dividing header">All Time</h3>;
-        }else if(timeRange === "medium_term"){
-            return <h3 className="ui dividing header">6 Months</h3>;
-        }else if(timeRange === "short_term"){
-            return <h3 className="ui dividing header">4 Weeks</h3>;
-        }
+        return (
+            <React.Fragment>
+                {timeRange === "long_term" && <h3 className="ui dividing header">All Time</h3>}
+                {timeRange === "medium_term" && <h3 className="ui dividing header">6 Months</h3>}
+                {timeRange === "short_term" && <h3 className="ui dividing header">4 Weeks</h3>}
+            </React.Fragment>
+        )
     }
 
     const toTitleCase = (text) => {

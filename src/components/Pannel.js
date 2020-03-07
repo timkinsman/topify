@@ -30,11 +30,13 @@ const Pannel = props => {
     }, []);
 
     return (
-        <div style={{paddingBottom: '50px'}}>
+        <div style={{background: 'white', paddingBottom: '50px'}}>
             <div className="ui container">   
                 <div className="ui stackable four column grid">
                         <div className="column">
-                            <h3 className="ui dividing header">Top {props.type.replace(/^\w/, c => c.toUpperCase())}</h3>
+                            <h3 className="ui dividing header">
+                                Top {props.type.replace(/^\w/, c => c.toUpperCase())}
+                            </h3>
                             <img src={imageURL} alt={name} className="ui medium rounded image" />
                         </div>
                         <PannelList token={props.token} type={props.type} timeRange="long_term" />
