@@ -43,21 +43,21 @@ const Pannel = props => {
                     </div>
                     <div className="middle aligned column">
                         <h1 style={{fontSize: "-webkit-xxx-large", textTransform: 'uppercase', background: "rgba(255,255,255,0.15)", width: 'fit-content', padding: "10px"}}>{name}</h1>
-                        <h3 style={{margin: "0", padding: "10px", width: "fit-content", color: "white", background: "#1d1b1c", textTransform: 'capitalize'}}>{data}</h3>
+                        <h3 style={{margin: "0", padding: "10px", width: "fit-content", color: "white", background: "#1b1c1d", textTransform: 'capitalize'}}>{data}</h3>
                     </div>
                 </div>
                 <div className="ui stackable three column grid">
                     <div className="column">
                         <h1 className="ui header">All Time</h1>
-                        <PannelList token={props.token} type={props.type} timeRange="long_term" offset="0" limit="10" />
+                        <PannelList token={props.token} type={props.type} timeRange="long_term"/>
                     </div>
                     <div className="column">
                         <h1 className="ui header">6 Months</h1>
-                        <PannelList token={props.token} type={props.type} timeRange="medium_term" offset="0" limit="10" />
+                        <PannelList token={props.token} type={props.type} timeRange="medium_term"/>
                     </div>
                     <div className="column">
                         <h1 className="ui header">4 Weeks</h1>
-                        <PannelList token={props.token} type={props.type} timeRange="short_term" offset="0" limit="10" />
+                        <PannelList token={props.token} type={props.type} timeRange="short_term"/>
                     </div>
                 </div>
             </div>
