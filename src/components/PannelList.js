@@ -26,41 +26,25 @@ const PannelList = props => {
         window.open(location, "_blank");
     }
 
-    const renderContent = (data) => {
-        if(isMobile) {
+    const renderData = () => {
             return (
-                <div className="middle aligned content" style={{textAlign: 'center', paddingBottom: '21px'}}>
-                    <a className="header">{data.name}</a>
-                    <div className="description" style={{textTransform: 'capitalize'}}>
-                        {props.type === "artists" ? (data.genres[0] ? data.genres[0] : "-") : data.artists[0].name}
-                    </div>
+                <div className="ui link items" style={{textAlign: isMobile ? '-webkit-center' : ''}}>
+                    {data.map((data) =>
+                        <div className="item" onClick={() => {onItemClick(data.external_urls.spotify)}} key={data.id} style={{background: "rgba(255, 255, 255, 0.15)", width: isMobile ? 'fit-content' : ''}}>
+                            <div className="ui tiny image">
+                                {props.type === "artists" && <img src={data.images[0].url} alt={data.name} style={{objectFit: 'cover'}} />}
+                                {props.type === "tracks" && <img src={data.album.images[0].url} alt={data.name} />}
+                            </div>
+                            <div className="middle aligned content" style={{textAlign: isMobile ? 'center' : '', paddingBottom: isMobile ? '21px' : ''}}>
+                                <a className="header">{data.name}</a>
+                                <div className="description" style={{textTransform: 'capitalize'}}>
+                                    {props.type === "artists" ? (data.genres[0] ? data.genres[0] : "-") : data.artists[0].name}
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
             )
-        }
-        return (
-            <div className="middle aligned content">
-                <a className="header">{data.name}</a>
-                <div className="description" style={{textTransform: 'capitalize'}}>
-                    {props.type === "artists" ? (data.genres[0] ? data.genres[0] : "-") : data.artists[0].name}
-                </div>
-            </div>
-        )
-    }
-
-    const renderData = () => {
-        return (
-            <div className="ui link items">
-                {data.map((data) =>
-                    <div className="item" onClick={() => {onItemClick(data.external_urls.spotify)}} key={data.id} style={{background: "rgba(255, 255, 255, 0.15)"}}>
-                        <div className="ui tiny image">
-                            {props.type === "artists" && <img src={data.images[0].url} alt={data.name} style={{objectFit: 'cover'}} />}
-                            {props.type === "tracks" && <img src={data.album.images[0].url} alt={data.name} />}
-                        </div>
-                        {renderContent(data)}
-                    </div>
-                )}
-            </div>
-        )
     }
 
     return (
