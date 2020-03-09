@@ -29,7 +29,7 @@ const CreateButton = props => {
                     })
                     const user_id = response.data.id;
 
-                    response = await spotify.post(`/users/${user_id}/playlists`, {name: `${renderName(props.timeRange)}`,
+                    response = await spotify.post(`/users/${user_id}/playlists`, {name: renderName(props.timeRange),
                     description: 'https://topify-app.herokuapp.com/'}, {
                         headers: {
                             Authorization: `Bearer ${token}`
@@ -60,7 +60,7 @@ const CreateButton = props => {
 
                 })(props.token)
             }
-        }} className="ui basic secondary button">Create</button>
+        }} className="ui secondary button">Create</button>
     )
 }
 
