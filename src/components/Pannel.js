@@ -32,7 +32,7 @@ const Pannel = props => {
     }, []);
 
     return (
-        <div style={{background: "rgb(238,174,202)", background: "linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)", padding: '50px 30px'}}>
+        <div style={{background: "rgb(238,174,202)", background: props.type==="artists" ? "linear-gradient(145deg,#ffc867,#f037a6)" : "linear-gradient(145deg,#509bf5,#f037a6)", padding: '50px 30px'}}>
             <div className="ui container">   
                 <h1 className="ui header">
                     Top {props.type.replace(/^\w/, c => c.toUpperCase())}
