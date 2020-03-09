@@ -25,7 +25,7 @@ const Cover = props => {
                         {displayName && (
                             <div>
                                 <h1 style={{fontSize: "-webkit-xxx-large", color: 'white'}}>Welcome, {displayName}...</h1>
-                                <h1 style={{color: "#1DB954"}}>Your top tracks and artists.</h1>
+                                <h1 style={{color: "pink"}}>Your top tracks and artists.</h1>
                             </div>
                         )}
                     </div>

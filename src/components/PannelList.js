@@ -13,7 +13,7 @@ const PannelList = props => {
                     Authorization: `Bearer ${token}`
                 },
                 params: {
-                    limit: 5,
+                    limit: 50,
                     time_range: props.timeRange
                 }
                 })
@@ -23,14 +23,14 @@ const PannelList = props => {
     }, []);
     
     const onItemClick = location => {
-        window.open(location, "_blank");
+        window.open(location);
     }
 
     const renderData = () => {
             return (
                 <div className="ui link items" style={{textAlign: isMobile ? '-webkit-center' : ''}}>
                     {data.map((data) =>
-                        <div className="item" onClick={() => {onItemClick(data.external_urls.spotify)}} key={data.id} style={{background: "rgba(255, 255, 255, 0.15)", width: isMobile ? 'fit-content' : ''}}>
+                        <div className="item" onClick={() => {onItemClick(data.uri)}} key={data.id} style={{background: "rgba(255, 255, 255, 0.15)", width: isMobile ? 'fit-content' : ''}}>
                             <div className="ui tiny image">
                                 {props.type === "artists" && <img src={data.images[0].url} alt={data.name} style={{objectFit: 'cover', height: isMobile ? '250px' : '80px', width: isMobile ? '250px' : '80px'}} />}
                                 {props.type === "tracks" && <img src={data.album.images[0].url} alt={data.name} />}

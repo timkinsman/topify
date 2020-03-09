@@ -4,7 +4,7 @@ import spotify from '../apis/spotify';
 
 const Header = props => {
     const [displayName, setDisplayName] = useState();
-    const [externalUrls, setExternalUrls] = useState();
+    const [URI, setURI] = useState();
 
     useEffect(() => {
         if(props.token){
@@ -15,7 +15,7 @@ const Header = props => {
                 }
                 })
                 setDisplayName(response.data.display_name);
-                setExternalUrls(response.data.external_urls.spotify);
+                setURI(response.data.uri);
             })(props.token)
         }
     }, [props.token]);
@@ -32,7 +32,7 @@ const Header = props => {
                     )}
                     {props.token && (
                         <React.Fragment>
-                            <a className="item" href={externalUrls} target="_blank" rel="noopener noreferrer">{displayName}</a>
+                            <a className="item" href={URI} target="_blank" rel="noopener noreferrer">{displayName}</a>
                             <a className="item" onClick={props.onClickEvent} href="/">Log Out</a>
                         </React.Fragment>
                     )}

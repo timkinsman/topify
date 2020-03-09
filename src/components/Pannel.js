@@ -32,14 +32,14 @@ const Pannel = props => {
     }, []);
 
     return (
-        <div style={{background: "rgb(238,174,202)", background: props.type==="artists" ? "linear-gradient(145deg,#ffc867,#f037a6)" : "linear-gradient(145deg,#509bf5,#f037a6)", padding: '50px 30px'}}>
+        <div style={{background: "rgb(238,174,202)", background: props.type==="artists" ? "pink" : "pink", padding: '50px 0'}}>
             <div className="ui container">   
-                <h1 className="ui header">
+                <h1 className="ui header" style={{textDecoration: 'line-through'}}>
                     Top {props.type.replace(/^\w/, c => c.toUpperCase())}
                 </h1>
                 <div className="ui stackable two column grid" style={{padding: '50px 0'}}>
                     <div className="column">
-                        <img src={imageURL} alt={name} className="ui image" style={{boxShadow: '-10px 10px'}} />
+                        <img src={imageURL} alt={name} className="ui image" style={{boxShadow: '0px 10px'}} />
                     </div>
                     <div className="middle aligned column">
                         <h1 style={{fontSize: "-webkit-xxx-large", textTransform: 'uppercase', background: "rgba(255,255,255,0.15)", width: 'fit-content', padding: "10px"}}>{name}</h1>
@@ -49,15 +49,25 @@ const Pannel = props => {
                 <div className="ui stackable three column grid">
                     <div className="column">
                         <h1 className="ui header">All Time</h1>
-                        <PannelList token={props.token} type={props.type} timeRange="long_term"/>
+                        <div style={{height: '500px', overflow: 'auto'}}>
+                            <PannelList token={props.token} type={props.type} timeRange="long_term"/>
+                            
+                        </div>
+                        <div style={{position: "relative", bottom: "4em", height: "4em", background: "-webkit-linear-gradient(rgb(255, 192, 203, 0) 0%, rgb(255, 192, 203, 1) 100%)"}}></div>
                     </div>
                     <div className="column">
                         <h1 className="ui header">6 Months</h1>
-                        <PannelList token={props.token} type={props.type} timeRange="medium_term"/>
+                        <div style={{height: '500px', overflow: 'auto'}}>
+                            <PannelList token={props.token} type={props.type} timeRange="medium_term"/>
+                        </div>
+                        <div style={{position: "relative", bottom: "4em", height: "4em", background: "-webkit-linear-gradient(rgb(255, 192, 203, 0) 0%, rgb(255, 192, 203, 1) 100%)"}}></div>
                     </div>
                     <div className="column">
                         <h1 className="ui header">4 Weeks</h1>
-                        <PannelList token={props.token} type={props.type} timeRange="short_term"/>
+                        <div style={{height: '500px', overflow: 'auto'}}>
+                            <PannelList token={props.token} type={props.type} timeRange="short_term"/>
+                        </div>
+                        <div style={{position: "relative", bottom: "4em", height: "4em", background: "-webkit-linear-gradient(rgb(255, 192, 203, 0) 0%, rgb(255, 192, 203, 1) 100%)"}}></div>
                     </div>
                 </div>
             </div>
