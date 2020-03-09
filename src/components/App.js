@@ -43,7 +43,7 @@ const App = () => {
           setToken(null);
         }}
       />
-      <Cover />
+      <Cover token={token} />
 
       {token && (
         <React.Fragment>

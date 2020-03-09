@@ -21,7 +21,7 @@ const Header = props => {
     }, [props.token]);
 
     return (
-        <div className="ui fixed inverted menu">
+        <div className="ui fixed inverted borderless menu">
             <div className="ui container">
                 <img src="/" className="item" alt='img' />
                 <div className="right menu">

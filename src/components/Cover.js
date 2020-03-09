@@ -1,9 +1,30 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import spotify from '../apis/spotify'
 
-const Cover = () => {
+const Cover = props => {
+    const [displayName, setDisplayName] = useState();
+
+    useEffect(() => {
+        if(props.token){
+            (async (token) => {
+                const response = await spotify.get('/me', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+                })
+                setDisplayName(response.data.display_name);
+            })(props.token)
+        }
+    }, [props.token]);
+
     return (
-        <div style={{background: 'rgb(27, 28, 29)', height: '100vh'}}>
+        <div style={{background: 'rgb(27, 28, 29)'}}>
             <div className="ui container">
+                <div className="ui stackable two column grid" style={{height: '100vh', margin: '0'}}>
+                    <div className="middle aligned column">
+                        {displayName && <h1 style={{fontSize: "-webkit-xxx-large", color: 'white'}}>Welcome, {displayName}...</h1>}
+                    </div>
+                </div>
             </div>
         </div>
     )

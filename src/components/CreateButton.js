@@ -10,11 +10,11 @@ const CreateButton = props => {
         const year = now.getYear() + 1900;
 
         if(timeRange === "long_term"){
-            return `All Time / ${month} ${year}`
+            return `All Time ${month} ${year}`
         }else if(timeRange === "medium_term"){
-            return `6 Months / ${month} ${year}`
+            return `6 Months ${month} ${year}`
         }else if(timeRange === "short_term"){
-            return `4 Weeks / ${month} ${year}`
+            return `4 Weeks ${month} ${year}`
         }
     }
 
@@ -30,7 +30,7 @@ const CreateButton = props => {
                     })
                     const user_id = response.data.id;
 
-                    response = await spotify.post(`/users/${user_id}/playlists`, {name: `Top-50 Tracks / ${renderName(props.timeRange)}`,
+                    response = await spotify.post(`/users/${user_id}/playlists`, {name: `${renderName(props.timeRange)}`,
                     description: 'https://topify-app.herokuapp.com/'}, {
                         headers: {
                             Authorization: `Bearer ${token}`
@@ -61,7 +61,7 @@ const CreateButton = props => {
 
                 })(props.token)
             }
-        }} className="ui secondary button">Create Playlist</button>
+        }} className="ui basic secondary button">Create</button>
     )
 }
 

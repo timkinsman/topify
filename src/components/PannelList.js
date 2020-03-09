@@ -12,7 +12,7 @@ const PannelList = props => {
                     Authorization: `Bearer ${token}`
                 },
                 params: {
-                    limit: 10,
+                    limit: props.limit,
                     time_range: props.timeRange,
                     offset: props.offset
                 }
@@ -21,10 +21,6 @@ const PannelList = props => {
             })(props.token)
         }
     }, []);
-
-    const toTitleCase = (text) => {
-        return text ? text.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ').replace("R&b", "R&B") : "-";
-    }
 
     const renderData = () => {
         return (
@@ -37,8 +33,8 @@ const PannelList = props => {
                         </div>
                         <div className="content">
                             <a className="author" href={data.external_urls.spotify} target="_blank" rel="noopener noreferrer">{data.name}</a>
-                            <div className="text">
-                                {props.type === "artists" ? toTitleCase(data.genres[0]) : data.artists[0].name}
+                            <div className="text" style={{textTransform: 'capitalize'}}>
+                                {props.type === "artists" ? (data.genres[0] ? data.genres[0] : "-") : data.artists[0].name}
                             </div>
                         </div>
                     </div>
