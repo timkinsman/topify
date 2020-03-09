@@ -29,18 +29,33 @@ const Pannel = props => {
     }, []);
 
     return (
-        <div style={{background: 'white', paddingBottom: '50px'}}>
+        <div style={{background: "rgb(238,174,202)", background: "linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)", padding: '50px'}}>
             <div className="ui container">   
-                <div className="ui stackable four column grid">
-                        <div className="column">
-                            <h3 className="ui dividing header">
-                                Top {props.type.replace(/^\w/, c => c.toUpperCase())}
-                            </h3>
-                            <img src={imageURL} alt={name} className="ui medium rounded image" />
-                        </div>
-                        <PannelList token={props.token} type={props.type} timeRange="long_term" />
-                        <PannelList token={props.token} type={props.type} timeRange="medium_term" />
-                        <PannelList token={props.token} type={props.type} timeRange="short_term" />
+                <h1 className="ui header">
+                    Top {props.type.replace(/^\w/, c => c.toUpperCase())}
+                </h1>
+                <h1 className="ui header">All Time // button</h1>
+                <div className="ui stackable three column grid">
+                    <div className="column">
+                        <img src={imageURL} alt={name} className="ui medium rounded image" />
+                        <p>some deets</p>
+                    </div>
+                    <div className="column">
+                        <PannelList token={props.token} type={props.type} timeRange="long_term" offset="0" />
+                    </div>
+                    <div className="column">
+                        <PannelList token={props.token} type={props.type} timeRange="long_term" offset="10" />
+                    </div>
+                </div>
+                <div className="ui stackable two column grid">
+                    <div className="column">
+                        <h1 className="ui header">6 Months // button</h1>
+                        <PannelList token={props.token} type={props.type} timeRange="medium_term" offset="0" />
+                    </div>
+                    <div className="column">
+                        <h1 className="ui header">4 Weeks // button</h1>
+                        <PannelList token={props.token} type={props.type} timeRange="short_term" offset="0" />
+                    </div>
                 </div>
             </div>
         </div>

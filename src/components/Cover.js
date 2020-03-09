@@ -2,20 +2,8 @@ import React from 'react';
 
 const Cover = () => {
     return (
-        <div style={{background: 'white', height: '100vh'}}>
+        <div style={{background: 'rgb(27, 28, 29)', height: '100vh'}}>
             <div className="ui container">
-                <h3>Topify</h3>
-                <h3>Topify</h3>
-                <h3>Topify</h3>
-                <h3>Topify</h3>
-                <h3>Topify</h3>
-                <h3>Topify</h3>
-                <h3>Topify</h3>
-                <h3>Topify</h3>
-                <h3>Topify</h3>
-                <h3>Topify</h3>
-                <h3>Topify</h3>
-                <h3>Topify</h3>
             </div>
         </div>
     )
