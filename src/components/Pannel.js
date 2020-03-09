@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import PannelList from './PannelList';
 import spotify from '../apis/spotify';
-import CreateButton from './CreateButton';
 
 const Pannel = props => {
     const [name, setName] = useState();

@@ -1,6 +1,5 @@
 import React from 'react';
 import spotify from '../apis/spotify';
-import { render } from 'react-dom';
 
 const CreateButton = props => {
     const renderName = (timeRange) => {
