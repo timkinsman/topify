@@ -23,7 +23,9 @@ const Header = props => {
     return (
         <div className="ui fixed inverted borderless menu">
             <div className="ui container">
-                <img src="/" className="item" alt='img' />
+                <div className="header item">
+                    <img src={require('../assets/topify.png')} className="ui tiny image" alt='topify' />
+                </div>
                 <div className="right menu">
                     {!props.token && (
                         <a className="item" href={`${authEndpoint}?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=${scopes.join(

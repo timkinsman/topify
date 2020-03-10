@@ -35,7 +35,7 @@ const App = () => {
   }, []);
 
   return (
-    <div style={{background: "#1b1c1d"}}>
+    <React.Fragment>
       <Header 
         token={token}
         onClickEvent={() => {
@@ -53,7 +53,7 @@ const App = () => {
       )}
 
       <Footer />
-    </div>
+    </React.Fragment>
   );
 }
 

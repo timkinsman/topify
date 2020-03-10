@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <div className="ui inverted vertical footer segment">
             <div className="ui center aligned container">
-                <img src="/" className="ui centered mini image" alt='img' />
+                <img src={require('../assets/topify.png')} className="ui centered tiny image" alt='img' />
                 <div className="ui horizontal inverted small link list">
                     <a className="item" href="https://github.com/timkinsman/topify" target="_blank" rel="noopener noreferrer">GitHub</a>
                     <a className="item" href="mailto:tkinsm@gmail.com">Contact</a>
