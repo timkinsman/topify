@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import hash from "../hash";
-import Cover from './Cover';
-import Footer from './Footer';
-import Header from './Header';
-import Pannel from './Pannel';
+import TopifyWelcome from "./TopifyWelcome";
+import TopifyShow from "./TopifyShow";
 
 const App = () => {
   const [token, setToken] = useState();
@@ -22,8 +20,9 @@ const App = () => {
 
     const itemStr = localStorage.getItem("token")
     if (!itemStr) {
-      return 
+      return
     }
+
     const item = JSON.parse(itemStr)
     const now = new Date()
     if(now.getTime() > item.expiry){
@@ -34,27 +33,11 @@ const App = () => {
     setToken(item.value);
   }, []);
 
-  return (
-    <React.Fragment>
-      <Header 
-        token={token}
-        onClickEvent={() => {
-          localStorage.removeItem("token");
-          setToken(null);
-        }}
-      />
-      <Cover token={token} />
+  if(token){
+    return <TopifyShow token={token} onClickEvent={() => {localStorage.removeItem("token"); setToken(null);}} />
+  }
 
-      {token && (
-        <React.Fragment>
-          <Pannel token={token} type="artists" />
-          <Pannel token={token} type="tracks" />
-        </React.Fragment>
-      )}
-
-      <Footer />
-    </React.Fragment>
-  );
+  return <TopifyWelcome />
 }
 
 export default App;
