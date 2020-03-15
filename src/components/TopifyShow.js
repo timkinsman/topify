@@ -39,7 +39,8 @@ const TopifyShow = ({token, onClickEvent}) => {
                     </div>
                 <div className="ui inverted vertical footer segment" style={{background: '#121212'}}>
                     <div className="ui center aligned container">
-                        Footer
+                        Built with <a href="https://reactjs.org/" target="_blank">React</a> · <a href="https://semantic-ui.com/" target="_blank">Semantic UI</a> · <a href="https://developer.spotify.com/documentation/web-api/" target="_blank">Spotify Web API</a> · <a href="https://github.com/JMPerez/spotify-web-api-js" target="_blank">spotify-web-api-js</a> · and more!
+                        <p>Branding by Kesha Crowly</p>
                     </div>
                 </div>
             </div>
