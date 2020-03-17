@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import SpotifyWebApi from 'spotify-web-api-js';
-import { Bar } from 'react-chartjs-2';
 import TopifyMe from './TopifyMe';
 import TopifyArtists from './TopifyArtists'
 import TopifyTracks from './TopifyTracks';
@@ -17,7 +16,7 @@ const TopifyShow = ({token, onClickEvent}) => {
             if (err) console.error(err);
             else setMe(data);
         })
-        spotifyApi.getMyTopArtists({limit: '50', time_range: 'long_term'}, function(err, data) {
+        spotifyApi.getMyTopArtists({limit: '25', time_range: 'long_term'}, function(err, data) {
             if (err) console.error(err);
             else setMyTopArtists(data.items);
         })
@@ -43,11 +42,16 @@ const TopifyShow = ({token, onClickEvent}) => {
 
                 <TopifyMe me={me} myTopArtists={myTopArtists} />
                 <TopifyArtists myTopArtists={myTopArtists} />
-                <TopifyTracks />
+                <TopifyTracks spotifyApi={spotifyApi} />
 
                 <div className="ui inverted vertical footer segment" style={{background: '#121212'}}>
                     <div className="ui center aligned container">
-                        Built with <a href="https://reactjs.org/" target="_blank" without rel="noopener noreferrer">React</a> · <a href="https://semantic-ui.com/" target="_blank" without rel="noopener noreferrer">Semantic UI</a> · <a href="https://developer.spotify.com/documentation/web-api/" target="_blank" without rel="noopener noreferrer">Spotify Web API</a> · <a href="https://github.com/JMPerez/spotify-web-api-js" target="_blank" without rel="noopener noreferrer">spotify-web-api-js</a> · and more!
+                        <div className="ui inverted horizontal small link list" >
+                            <a className="item" href="https://github.com/facebook/create-react-app" target="_blank" rel="noopener noreferrer">create-react-app</a>
+                            <a className="item" href="https://semantic-ui.com/" target="_blank" rel="noopener noreferrer">Semantic UI</a>
+                            <a className="item" href="https://developer.spotify.com/documentation/web-api/quick-start/" target="_blank" rel="noopener noreferrer">Spotify Web API</a>
+                            <a className="item" href="https://github.com/JMPerez/spotify-web-api-js" target="_blank" rel="noopener noreferrer">spotify-web-api-js</a>
+                        </div>
                         <p>Branding by Kesha Crowley</p>
                     </div>
                 </div>
@@ -55,7 +59,7 @@ const TopifyShow = ({token, onClickEvent}) => {
         )
     }
 
-    return <div class="ui active inverted huge text loader">Loading</div>
+    return <div className="ui active inverted huge text loader">Loading</div>
 }
 
 export default TopifyShow;
