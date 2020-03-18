@@ -27,6 +27,7 @@ const TopifyMe = ({me, myTopArtists}) => {
             display: false
         }
     }
+
     return (
         <div className="ui grid" style={{height: '100vh'}}>
             <div className="middle aligned column">
