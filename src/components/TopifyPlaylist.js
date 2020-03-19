@@ -20,7 +20,7 @@ const TopifyPlaylist = ({id, myTopTracks, spotifyApi}) => {
     if(playlistUri && createPlaylist){
         return (
             <div style={{textAlign: 'center', padding: '100px 0'}}>
-                <h1 className="ui inverted grey header">Your Topify Playlist</h1>
+                <h1 className="ui inverted grey header" style={{fontSize: '-webkit-xxx-large'}}>Your Topify Playlist</h1>
                 <h3 style={{color: "#bb86fc"}}>We’ve generated a playlist just for you based on your most recent streaming history. Enjoy!</h3>
                 <a className="circular ui inverted button" href={playlistUri}>OPEN IN SPOTIFY</a>
             </div>
