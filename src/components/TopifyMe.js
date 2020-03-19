@@ -34,7 +34,7 @@ const TopifyMe = ({me, myTopArtists}) => {
         maintainAspectRatio: false
     }
     return (
-        <div className="ui stackable two column grid" style={{height: '100vh'}}>
+        <div className="ui stackable two column grid" style={{height: '100vh', padding: '100px 0'}}>
             <div className="middle aligned column">
                 <div>
                     <h1 className="ui inverted grey header" style={{fontSize: '-webkit-xxx-large'}}>Welcome, {me.display_name.replace(/ .*/,'')}!</h1>
