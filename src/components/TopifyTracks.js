@@ -11,9 +11,9 @@ const TopifyTracks = ({spotifyApi}) => {
     }, [])
 
     if(myTopTracks){
-        console.log(myTopTracks)
+        console.log("myTopTracks", myTopTracks)
         return (
-            <div className="ui stackable two column grid" style={{height: '100vh'}}>
+            <div className="ui stackable two column grid">
                 <div className="middle aligned column">
                     Left
                 </div>

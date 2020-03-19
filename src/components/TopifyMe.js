@@ -4,37 +4,45 @@ import {Bar} from 'react-chartjs-2'
 const TopifyMe = ({me, myTopArtists}) => {
     var res = {}
     myTopArtists.forEach(v => v.genres.map(w => res[w] = (res[w] || 0) + 1))
+    var sortable = [];
+    for (var genre in res) {
+        sortable.push([genre, res[genre] / 50]);
+    }
+    sortable.sort(function(a, b) {
+        return b[1] - a[1];
+    });
+    sortable = Object.fromEntries(sortable.slice(0, 5))
     const data = {
-        labels: Object.keys(res),
+        labels: Object.keys(sortable),
         datasets: [{
-            data: Object.values(res),
-            backgroundColor: 'orange'
+            data: Object.values(sortable),
+            backgroundColor: '#bb86fc'
         }],
     }
     const options = {
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero: true
+                    display: false,
+                    max: 1
                 }
             }]
         },
-        title: {
-            display: true,
-            text: 'Top genres (sampled from your top 25 artists)'
-        },
         legend: {
             display: false
-        }
+        },
+        maintainAspectRatio: false
     }
     return (
-        <div className="ui grid" style={{height: '100vh'}}>
+        <div className="ui stackable two column grid" style={{height: '100vh'}}>
             <div className="middle aligned column">
-                <div style={{margin: '50px 0'}}>
-                    <h1 className="ui inverted grey header">Welcome, {me.display_name.replace(/ .*/,'')}!</h1>
-                    <h1 style={{color: "orange"}}>Your top tracks and artists await...</h1>
+                <div>
+                    <h1 className="ui inverted grey header" style={{fontSize: '-webkit-xxx-large'}}>Welcome, {me.display_name.replace(/ .*/,'')}!</h1>
+                    <h1 style={{color: "#bb86fc"}}>Your top genre is {Object.keys(sortable)[0]} which appears in {Object.values(sortable)[0] * 100}% of your top artists.</h1>
                 </div>
-                <Bar data={data} options={options} />
+            </div>
+            <div className="middle aligned column">
+                <Bar data={data} options={options} height={500} options={options} />
             </div>
         </div>
     )

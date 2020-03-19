@@ -2,11 +2,11 @@ import React from 'react';
 
 const TopifyArtists = ({myTopArtists}) => {
     return (
-        <div className="ui stackable two column grid" style={{height: '100vh'}}>
-            <div className="middle aligned column">
+        <div className="ui stackable two column grid">
+            <div className="column">
                 <img className="ui large image" src={myTopArtists[0].images[0].url} alt="img" style={{float: 'right'}} />
             </div>
-            <div className="middle aligned column">
+            <div className="column">
                 Right
             </div>
         </div>
