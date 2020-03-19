@@ -14,10 +14,10 @@ const TopifyArtists = ({spotifyApi}) => {
         console.log("myTopArtists", myTopArtists)
         return (
             <div className="ui stackable two column grid">
-                <div className="column">
-                    <img className="ui large image" src={myTopArtists[0].images[0].url} alt="img" style={{float: 'right'}} />
+                <div className="middle aligned column">
+                    <img className="ui large image" src={myTopArtists[0].images[0].url} alt="img" />
                 </div>
-                <div className="column">
+                <div className="middle aligned column">
                     Right
                 </div>
             </div>
