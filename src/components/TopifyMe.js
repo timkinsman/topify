@@ -33,6 +33,7 @@ const TopifyMe = ({me, myTopArtists}) => {
         },
         maintainAspectRatio: false
     }
+
     return (
         <div className="ui stackable two column grid" style={{height: '100vh', padding: '100px 0'}}>
             <div className="middle aligned column">
