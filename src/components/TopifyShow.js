@@ -23,9 +23,17 @@ const TopifyShow = ({token, onClickEvent}) => {
             if (err) console.error(err);
             else setMyTopArtists(data.items);
         })
-        spotifyApi.getMyTopTracks({limit: '20', time_range: 'short_term'}, function(err, data) {
+        spotifyApi.getMyTopTracks({limit: '5', time_range: 'short_term'}, function(err, data) {
             if (err) console.error(err);
-            else setMyTopTracks(data.items.map(e => e.uri));
+            else {
+                spotifyApi.getRecommendations({seed_tracks: data.items.splice(0, 5).map(e => e.id)}, function(err, data) {
+                    if (err) console.error(err)
+                    else {
+                        console.log("seeds", data.seeds)
+                        setMyTopTracks(data.tracks.map(e => e.uri))
+                    }
+                })
+            }
         })
     }, [])
 

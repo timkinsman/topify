@@ -6,7 +6,7 @@ const TopifyTracks = ({spotifyApi}) => {
     useEffect(() => {
         spotifyApi.getMyTopTracks({limit: '50', time_range: 'long_term'}, function(err, data) {
             if (err) console.error(err);
-            else setMyTopTracks(data.items);
+            else setMyTopTracks(data.items)
         })
     }, [])
 
