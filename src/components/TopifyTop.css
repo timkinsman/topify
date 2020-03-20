@@ -7,7 +7,7 @@ a:hover {
     cursor: pointer;
 }
 
-.active {
+.not-active {
     color: #23024b;
     text-decoration: line-through;
 }

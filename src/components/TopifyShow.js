@@ -73,7 +73,7 @@ const TopifyShow = ({token, onClickEvent}) => {
         )
     }
 
-    return <div className="ui active inverted huge text loader">Loading</div>
+    return <div className="ui active huge text loader">Loading</div>
 }
 
 export default TopifyShow;
