@@ -41,25 +41,25 @@ const TopifyShow = ({token, onClickEvent}) => {
         console.log("Me", me)
         return (
             <>
-                <div className="ui fixed inverted borderless menu" style={{background: '#121212'}}>
-                    <div className="header item">
-                        <img src="/" className="ui tiny image" alt='topify' />
+                <div className="ui fixed secondary large menu" style={{background: '#fff'}}>
+                    <div className="item">
+                        <a className="item">Topify</a>
                     </div>
                     <div className="right menu">
                         <a className="item" href={me.uri} target="_blank" rel="noopener noreferrer">{me.display_name}</a>
-                        <a className="item" onClick={onClickEvent} href="/">Log Out</a>
+                        <a className="item" onClick={onClickEvent} href="/">Logout</a>
                     </div>
                 </div>
 
                 <div className="ui container">
-
                     <TopifyMe me={me} myTopArtists={myTopArtists} />
                     <TopifyTop spotifyApi={spotifyApi} />
                     <TopifyPlaylist id={me.id} myTopTracks={myTopTracks} spotifyApi={spotifyApi} />
-
-                    <div className="ui inverted vertical footer segment" style={{background: '#121212'}}>
+                </div>
+                
+                <div className="ui vertical footer segment">
                         <div className="ui center aligned container">
-                            <div className="ui inverted horizontal small link list" >
+                            <div className="ui horizontal small link list" >
                                 <a className="item" href="https://github.com/facebook/create-react-app" target="_blank" rel="noopener noreferrer">create-react-app</a>
                                 <a className="item" href="https://semantic-ui.com/" target="_blank" rel="noopener noreferrer">Semantic UI</a>
                                 <a className="item" href="https://developer.spotify.com/documentation/web-api/quick-start/" target="_blank" rel="noopener noreferrer">Spotify Web API</a>
@@ -67,10 +67,8 @@ const TopifyShow = ({token, onClickEvent}) => {
                                 <a className="item" href="https://www.chartjs.org/" target="_blank" rel="noopener noreferrer">Chart.js</a>
                                 <a className="item" href="https://github.com/jerairrest/react-chartjs-2" target="_blank" rel="noopener noreferrer">react-chartjs-2</a>
                             </div>
-                            <p>Branding by Kesha Crowley</p>
                         </div>
                     </div>
-                </div>
             </>
         )
     }

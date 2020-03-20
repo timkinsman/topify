@@ -1,5 +1,5 @@
 import React from 'react'
-import {Bar} from 'react-chartjs-2'
+import {Bar, HorizontalBar, Pie, Doughnut, Line} from 'react-chartjs-2'
 
 const TopifyMe = ({me, myTopArtists}) => {
     var res = {}
@@ -16,34 +16,20 @@ const TopifyMe = ({me, myTopArtists}) => {
         labels: Object.keys(sortable),
         datasets: [{
             data: Object.values(sortable),
-            backgroundColor: '#bb86fc'
-        }],
+            backgroundColor: ['#bb86fc', '#913bfa', '#6906e2', '#460497', '#23024b'],
+            borderWidth: 0
+        }]
     }
-    const options = {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    display: false,
-                    max: 1
-                }
-            }]
-        },
-        legend: {
-            display: false
-        },
-        maintainAspectRatio: false
-    }
-
     return (
-        <div className="ui stackable two column grid" style={{height: '100vh', padding: '100px 0'}}>
+        <div className="ui stackable one column grid" style={{height: '100vh', padding: '100px 0'}}>
             <div className="middle aligned column">
-                <div>
+                <div style={{textAlign: 'center'}}>
                     <h1 className="ui inverted grey header" style={{fontSize: '-webkit-xxx-large'}}>Welcome, {me.display_name.replace(/ .*/,'')}!</h1>
-                    <h1 style={{color: "#bb86fc"}}>Your top genre is {Object.keys(sortable)[0]} which appears in {Object.values(sortable)[0] * 100}% of your top artists.</h1>
+                    <p style={{color: "#bb86fc"}}>Your top genre is {Object.keys(sortable)[0]} which appears in {Object.values(sortable)[0] * 100}% of your top artists.</p>
                 </div>
             </div>
             <div className="middle aligned column">
-                <Bar data={data} options={options} height={500} options={options} />
+                <Pie data={data} />
             </div>
         </div>
     )
