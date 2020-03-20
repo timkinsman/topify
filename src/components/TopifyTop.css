@@ -1,0 +1,13 @@
+a {
+    color: #bb86fc
+}
+
+a:hover {
+    color: #bb86fc;
+    cursor: pointer;
+}
+
+.active {
+    color: #23024b;
+    text-decoration: line-through;
+}

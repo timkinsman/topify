@@ -1,5 +1,5 @@
 import React from 'react'
-import {Bar, HorizontalBar, Pie, Doughnut, Line} from 'react-chartjs-2'
+import {Pie} from 'react-chartjs-2'
 
 const TopifyMe = ({me, myTopArtists}) => {
     var res = {}
