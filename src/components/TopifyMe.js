@@ -35,7 +35,7 @@ const TopifyMe = ({me, myTopArtists}) => {
     return (
         <div className="ui stackable two column grid" style={{height: '100vh', padding: '100px 0'}}>
             <div className="middle aligned column">
-                <div style={{textAlign: 'left'}}>
+                <div style={{textAlign: 'center'}}>
                     <h1 className="ui inverted grey header" style={{fontSize: '-webkit-xxx-large'}}>Welcome, {me.display_name.replace(/ .*/,'')}!</h1>
                     <h1 className="ui header" style={{fontSize: '-webkit-xxx-large', color: "#bb86fc"}}>YOUR TOP GENRES</h1>
                 </div>
