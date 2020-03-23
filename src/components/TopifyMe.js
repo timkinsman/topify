@@ -1,5 +1,5 @@
 import React from 'react'
-import {Pie} from 'react-chartjs-2'
+import {Bar} from 'react-chartjs-2'
 
 const TopifyMe = ({me, myTopArtists}) => {
     var res = {}
@@ -20,16 +20,28 @@ const TopifyMe = ({me, myTopArtists}) => {
             borderWidth: 0
         }]
     }
+    const options = {
+        legend: {
+            display: false
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    max: 1,
+                }
+            }]
+        }
+    }
     return (
-        <div className="ui stackable one column grid" style={{height: '100vh', padding: '100px 0'}}>
+        <div className="ui stackable two column grid" style={{height: '100vh', padding: '100px 0'}}>
             <div className="middle aligned column">
-                <div style={{textAlign: 'center'}}>
+                <div style={{textAlign: 'left'}}>
                     <h1 className="ui inverted grey header" style={{fontSize: '-webkit-xxx-large'}}>Welcome, {me.display_name.replace(/ .*/,'')}!</h1>
-                    <p style={{color: "#bb86fc"}}>Your top genre is {Object.keys(sortable)[0]} which appears in {Object.values(sortable)[0] * 100}% of your top artists.</p>
+                    <h1 className="ui header" style={{fontSize: '-webkit-xxx-large', color: "#bb86fc"}}>YOUR TOP GENRES</h1>
                 </div>
             </div>
             <div className="middle aligned column">
-                <Pie data={data} />
+                <Bar data={data} options={options} />
             </div>
         </div>
     )

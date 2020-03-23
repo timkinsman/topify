@@ -20,12 +20,11 @@ const TopifyTracks = ({spotifyApi, timeRange}) => {
             console.log("myTopTracks", myTopTracks)
             return (
                 <div className="ui stackable two column grid">
-                    <div className="middle aligned column" style={{textAlign: 'center'}}>
-                        <h1 className="ui inverted grey header">Your Top Track</h1>
-                        <h1 className="ui inverted grey header" style={{fontSize: '-webkit-xxx-large'}}>{myTopTracks[0].name}</h1>
-                    </div>
                     <div className="middle aligned column" style={{textAlign: '-webkit-center'}}>
                         <img className="ui large image" src={myTopTracks[0].album.images[0].url} alt="img" style={{boxShadow: '0 0 5px'}} />
+                    </div>
+                    <div className="middle aligned column" style={{textAlign: 'center'}}>
+                        <a href={myTopTracks[0].uri} className="ui inverted grey header" style={{fontSize: '-webkit-xxx-large', textTransform: 'uppercase'}}>{myTopTracks[0].name}</a>
                     </div>
                 </div>
             )
@@ -33,18 +32,30 @@ const TopifyTracks = ({spotifyApi, timeRange}) => {
         console.log("myTopRecentTracks", myTopRecentTracks)
         return (
             <div className="ui stackable two column grid">
-                <div className="middle aligned column" style={{textAlign: 'center'}}>
-                    <h1 className="ui inverted grey header">Your Top Track</h1>
-                    <h1 className="ui inverted grey header" style={{fontSize: '-webkit-xxx-large'}}>{myTopRecentTracks[0].name}</h1>
-                </div>
                 <div className="middle aligned column" style={{textAlign: '-webkit-center'}}>
                     <img className="ui large image" src={myTopRecentTracks[0].album.images[0].url} alt="img" style={{boxShadow: '0 0 5px'}} />
+                </div>
+                <div className="middle aligned column" style={{textAlign: 'center'}}>
+                    <a href={myTopRecentTracks[0].uri} className="ui inverted grey header" style={{fontSize: '-webkit-xxx-large', textTransform: 'uppercase'}}>{myTopRecentTracks[0].name}</a>
                 </div>
             </div>
         )
     }
 
-    return <div>Loading</div>
+    return (
+        <div className="ui stackable two column grid">
+            <div className="middle aligned column" style={{textAlign: '-webkit-center'}}>
+                <div class="ui placeholder">
+                    <div class="square image" style={{boxShadow: '0 0 5px'}}></div>
+                </div>
+            </div>
+            <div className="middle aligned column" style={{textAlign: 'center'}}>
+                <div class="ui placeholder">
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+    )
 }
 
 export default TopifyTracks;

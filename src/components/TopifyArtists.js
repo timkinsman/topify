@@ -24,8 +24,7 @@ const TopifyArtists = ({spotifyApi, timeRange}) => {
                         <img className="ui large image" src={myTopArtists[0].images[0].url} alt="img" style={{boxShadow: '0 0 5px'}} />
                     </div>
                     <div className="middle aligned column" style={{textAlign: 'center'}}>
-                        <h1 className="ui inverted grey header">Your Top Artist</h1>
-                        <h1 className="ui inverted grey header" style={{fontSize: '-webkit-xxx-large'}}>{myTopArtists[0].name}</h1>
+                        <a href={myTopArtists[0].uri} className="ui inverted grey header" style={{fontSize: '-webkit-xxx-large', textTransform: 'uppercase'}}>{myTopArtists[0].name}</a>
                     </div>
                 </div>
             )
@@ -37,14 +36,26 @@ const TopifyArtists = ({spotifyApi, timeRange}) => {
                     <img className="ui large image" src={myTopRecentArtists[0].images[0].url} alt="img" style={{boxShadow: '0 0 5px'}} />
                 </div>
                 <div className="middle aligned column" style={{textAlign: 'center'}}>
-                    <h1 className="ui inverted grey header">Your Top Artist</h1>
-                    <h1 className="ui inverted grey header" style={{fontSize: '-webkit-xxx-large'}}>{myTopRecentArtists[0].name}</h1>
+                    <a href={myTopRecentArtists[0].uri} className="ui inverted grey header" style={{fontSize: '-webkit-xxx-large', textTransform: 'uppercase'}}>{myTopRecentArtists[0].name}</a>
                 </div>
             </div>
         )    
     }
 
-    return <div>Loading</div>
+    return (
+        <div className="ui stackable two column grid">
+            <div className="middle aligned column" style={{textAlign: '-webkit-center'}}>
+                <div class="ui placeholder">
+                    <div class="square image"></div>
+                </div>
+            </div>
+            <div className="middle aligned column" style={{textAlign: 'center'}}>
+                <div class="ui placeholder">
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+    )
 }
 
 export default TopifyArtists;

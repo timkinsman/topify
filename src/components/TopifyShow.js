@@ -41,13 +41,15 @@ const TopifyShow = ({token, onClickEvent}) => {
         console.log("Me", me)
         return (
             <>
-                <div className="ui fixed secondary large menu" style={{background: '#fff'}}>
+                <div className="ui fixed icon secondary large menu" style={{background: '#fff'}}>
                     <div className="item">
-                        <a className="item">Topify</a>
+                        <a className="item" href="https://github.com/timkinsman/topify.git" target="_blank" rel="noopener noreferrer">
+                            <i className="github large icon"></i>
+                        </a>
                     </div>
                     <div className="right menu">
                         <a className="item" href={me.uri} target="_blank" rel="noopener noreferrer">{me.display_name}</a>
-                        <a className="item" onClick={onClickEvent} href="/">Logout</a>
+                        <a className="item" onClick={onClickEvent} href="/">logout</a>
                     </div>
                 </div>
 
