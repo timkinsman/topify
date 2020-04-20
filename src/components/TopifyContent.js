@@ -23,7 +23,7 @@ const TopifyContent = ({AL, TL, AR, TR}) => {
                                         onClick={window.scrollTo(0, 0)}
                                     />
                                     <div className='overlay' onClick={() => setIndex(i)}>
-                                        <div className='text'>{el.name} // {i + 1}</div>
+                                        <div className='text'>{i + 1} // {el.name}</div>
                                     </div>
                                 </div>
                             </div>
@@ -51,8 +51,11 @@ const TopifyContent = ({AL, TL, AR, TR}) => {
                     />
                 </div>
                 <div class="eight wide column" style={{alignSelf: 'center'}}>
-                    <h1 className="h01">{selected[index].name}</h1>
-                    <p className="h00">{selected === AL || selected === AR ? selected[index].genres[0] : selected[index].artists[0].name}</p>
+                    <h1 className="h01">{index + 1} // {selected[index].name}</h1>
+                    <p className="h00" style={{textTransform: 'capitalize'}}>{selected === AL || selected === AR ? selected[index].genres[0] : selected[index].artists[0].name}</p>
+                    <a className="h00" href={selected[index].uri}>
+                        Visit
+                    </a>
                 </div>
             </div>
             <div>

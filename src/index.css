@@ -2,14 +2,6 @@ html {
     scroll-behavior: smooth;
 }
 
-.h00 {
-    color: #A0A0A0;
-}
-
-.h01 {
-    color: #222222
-}
-
 a {
     color: #A0A0A0;
 }
@@ -19,13 +11,17 @@ a:hover {
     cursor: pointer;
 }
 
+h1 {
+    color: #222222
+}
+
+p {
+    color: #A0A0A0;
+}
+
 .active {
     color: #222222;
 }
-
-.wrapper {
-    position: relative;
-  }
   
 .image {
     display: block;
@@ -46,11 +42,6 @@ a:hover {
     background-color: #222222;
 }
 
-.wrapper:hover .overlay {
-    opacity: 0.75;
-    cursor: pointer;
-}
-
 .text {
     color: white;
     font-size: 16px;
@@ -61,4 +52,13 @@ a:hover {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center;
+}
+
+.wrapper {
+    position: relative;
+}
+
+.wrapper:hover .overlay {
+    opacity: 0.75;
+    cursor: pointer;
 }

@@ -38,8 +38,8 @@ const TopifyShow = ({token, onClickEvent}) => {
 
     if(me && myTopArtistsLifetime && myTopTracksLifeTime && myTopArtistsRecent && myTopTracksRecent){
         return (
-            <div>
-                <div className="ui icon secondary menu" style={{background: '#fff'}}>
+            <div style={{height: '100vh'}}>
+                <div className="ui icon fixed secondary menu" style={{background: '#fff'}}>
                     <div className="item">
                         <a className="item" href="https://github.com/timkinsman/topify" target="_blank" rel="noopener noreferrer">
                             <i className="github large icon"></i>
@@ -51,7 +51,7 @@ const TopifyShow = ({token, onClickEvent}) => {
                     </div>
                 </div>
 
-                <div className="ui container" style={{textAlign: 'center', margin: '50px 0'}}>
+                <div className="ui container" style={{textAlign: 'center', minHeight: '100vh', padding: '100px 0 100px 0'}}>
                     <h1>Topify</h1>
                     <TopifyContent
                         AL={myTopArtistsLifetime}
@@ -59,9 +59,11 @@ const TopifyShow = ({token, onClickEvent}) => {
                         AR={myTopArtistsRecent}
                         TR={myTopTracksRecent}
                     />
-                </div>  
-                <div>
-                    <h1>FOTTER</h1>
+                </div>
+
+                <div style={{textAlign: 'center', paddingBottom: '50px'}}>
+                        <h1>What is Topify?</h1>
+                        <p>its the greatest website of all time, alllll time</p>
                 </div>
             </div>
         )
