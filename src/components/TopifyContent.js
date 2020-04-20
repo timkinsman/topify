@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 const TopifyContent = ({AL, TL, AR, TR}) => {
     const [selected, setSelected] = useState(AL);
     const [seeMore, setSeeMore] = useState(false)
+    const [index, setIndex] = useState(0)
 
     const seeMoreButton = (seeMore) => {
         if(seeMore){
@@ -19,8 +20,9 @@ const TopifyContent = ({AL, TL, AR, TR}) => {
                                         className='image' 
                                         src={selected === AL || selected === AR ? el.images[0].url : el.album.images[0].url} 
                                         style={{width: '100%'}}
+                                        onClick={window.scrollTo(0, 0)}
                                     />
-                                    <div className='overlay'>
+                                    <div className='overlay' onClick={() => setIndex(i)}>
                                         <div className='text'>{el.name} // {i + 1}</div>
                                     </div>
                                 </div>
@@ -36,21 +38,21 @@ const TopifyContent = ({AL, TL, AR, TR}) => {
     return(
         <div>
             <div class="ui grid">
-                <div class="four wide column"><a onClick={() => setSelected(AL)} className={selected === AL ? 'active' : null}>Artists<br />Lifetime</a></div>
-                <div class="four wide column"><a onClick={() => setSelected(TL)} className={selected === TL ? 'active' : null}>Tracks<br />Lifetime</a></div>
-                <div class="four wide column"><a onClick={() => setSelected(AR)} className={selected === AR ? 'active' : null}>Artists<br />Recent</a></div>
-                <div class="four wide column"><a onClick={() => setSelected(TR)} className={selected === TR ? 'active' : null}>Tracks<br />Recent</a></div>
+                <div class="four wide column"><a onClick={() => (setSelected(AL), setSeeMore(false), setIndex(0))} className={selected === AL ? 'active' : null}>Artists<br />Lifetime</a></div>
+                <div class="four wide column"><a onClick={() => (setSelected(TL), setSeeMore(false), setIndex(0))} className={selected === TL ? 'active' : null}>Tracks<br />Lifetime</a></div>
+                <div class="four wide column"><a onClick={() => (setSelected(AR), setSeeMore(false), setIndex(0))} className={selected === AR ? 'active' : null}>Artists<br />Recent</a></div>
+                <div class="four wide column"><a onClick={() => (setSelected(TR), setSeeMore(false), setIndex(0))} className={selected === TR ? 'active' : null}>Tracks<br />Recent</a></div>
             </div>
             <div class="ui grid">
                 <div class="eight wide column">
                     <img 
-                        src={selected === AL || selected === AR ? selected[0].images[0].url : selected[0].album.images[0].url} 
+                        src={selected === AL || selected === AR ? selected[index].images[0].url : selected[index].album.images[0].url} 
                         style={{width: '100%'}}
                     />
                 </div>
                 <div class="eight wide column" style={{alignSelf: 'center'}}>
-                    <h1 className="h01">{selected[0].name}</h1>
-                    <p className="h00">{selected === AL || selected === AR ? selected[0].genres[0] : selected[0].artists[0].name}</p>
+                    <h1 className="h01">{selected[index].name}</h1>
+                    <p className="h00">{selected === AL || selected === AR ? selected[index].genres[0] : selected[index].artists[0].name}</p>
                 </div>
             </div>
             <div>
