@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
+
 import hash from "../hash";
-import TopifyWelcome from "./TopifyWelcome";
+
 import TopifyShow from "./TopifyShow";
+import TopifyWelcome from "./TopifyWelcome";
 
 const App = () => {
   const [token, setToken] = useState();
