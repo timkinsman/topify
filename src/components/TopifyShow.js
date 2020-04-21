@@ -1,15 +1,14 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
-import TopifyMe from './TopifyMe';
-import TopifyArtists from './TopifyArtists'
-import TopifyTracks from './TopifyTracks';
-import TopifyTop from './ToptifyTop';
-import TopifyPlaylist from './TopifyPlaylist';
+
+import TopifyContent from './TopifyContent';
 
 const TopifyShow = ({token, onClickEvent}) => {
     const [me, setMe] = useState();
-    const [myTopArtists, setMyTopArtists] = useState();
-    const [myTopTracks, setMyTopTracks] = useState();
+    const [myTopArtistsLifetime, setMyTopArtistsLifetime] = useState();
+    const [myTopTracksLifeTime, setMyTopTracksLifeTime] = useState();
+    const [myTopArtistsRecent, setMyTopArtistsRecent] = useState();
+    const [myTopTracksRecent, setMyTopTracksRecent] = useState();
 
     var spotifyApi = new SpotifyWebApi();
     spotifyApi.setAccessToken(token);
@@ -19,59 +18,48 @@ const TopifyShow = ({token, onClickEvent}) => {
             if (err) console.error(err);
             else setMe(data);
         })
-        spotifyApi.getMyTopArtists({limit: '50', time_range: 'long_term'}, function(err, data) {
+        spotifyApi.getMyTopArtists({limit: '20', time_range: 'long_term'}, function(err, data) {
             if (err) console.error(err);
-            else setMyTopArtists(data.items);
+            else setMyTopArtistsLifetime(data.items);
         })
-        spotifyApi.getMyTopTracks({limit: '5', time_range: 'short_term'}, function(err, data) {
+        spotifyApi.getMyTopTracks({limit: '20', time_range: 'long_term'}, function(err, data) {
             if (err) console.error(err);
-            else {
-                spotifyApi.getRecommendations({seed_tracks: data.items.splice(0, 5).map(e => e.id)}, function(err, data) {
-                    if (err) console.error(err)
-                    else {
-                        console.log("seeds", data.seeds)
-                        setMyTopTracks(data.tracks.map(e => e.uri))
-                    }
-                })
-            }
+            else setMyTopTracksLifeTime(data.items);
+        })
+        spotifyApi.getMyTopArtists({limit: '20', time_range: 'short_term'}, function(err, data) {
+            if (err) console.error(err);
+            else setMyTopArtistsRecent(data.items);
+        })
+        spotifyApi.getMyTopTracks({limit: '20', time_range: 'short_term'}, function(err, data) {
+            if (err) console.error(err);
+            else setMyTopTracksRecent(data.items);
         })
     }, [])
 
-    if(me && myTopArtists && myTopTracks){
-        console.log("Me", me)
+    if(me && myTopArtistsLifetime && myTopTracksLifeTime && myTopArtistsRecent && myTopTracksRecent){
         return (
-            <>
-                <div className="ui fixed icon secondary large menu" style={{background: '#fff'}}>
-                    <div className="item">
-                        <a className="item" href="https://github.com/timkinsman/topify.git" target="_blank" rel="noopener noreferrer">
-                            <i className="github large icon"></i>
-                        </a>
-                    </div>
+            <div>
+                <div className="ui fixed secondary menu" style={{background: '#fff'}}>
+                    <a className="item" href="https://github.com/timkinsman/topify" target="_blank" rel="noopener noreferrer">
+                        <i className="github large icon"></i>
+                    </a>
                     <div className="right menu">
-                        <a className="item" href={me.uri} target="_blank" rel="noopener noreferrer">{me.display_name}</a>
-                        <a className="item" onClick={onClickEvent} href="/">logout</a>
+                        <a className="item" href={me.uri}>{me.display_name}</a>
+                        <a className="item" onClick={onClickEvent} href="/">Sign Out</a>
                     </div>
                 </div>
 
                 <div className="ui container">
-                    <TopifyMe me={me} myTopArtists={myTopArtists} />
-                    <TopifyTop spotifyApi={spotifyApi} />
-                    <TopifyPlaylist id={me.id} myTopTracks={myTopTracks} spotifyApi={spotifyApi} />
+                    <TopifyContent
+                        myTop={[myTopArtistsLifetime, myTopTracksLifeTime, myTopArtistsRecent, myTopTracksRecent]}
+                    />
                 </div>
-                
-                <div className="ui vertical footer segment">
-                        <div className="ui center aligned container">
-                            <div className="ui horizontal small link list" >
-                                <a className="item" href="https://github.com/facebook/create-react-app" target="_blank" rel="noopener noreferrer">create-react-app</a>
-                                <a className="item" href="https://semantic-ui.com/" target="_blank" rel="noopener noreferrer">Semantic UI</a>
-                                <a className="item" href="https://developer.spotify.com/documentation/web-api/quick-start/" target="_blank" rel="noopener noreferrer">Spotify Web API</a>
-                                <a className="item" href="https://github.com/JMPerez/spotify-web-api-js" target="_blank" rel="noopener noreferrer">spotify-web-api-js</a>
-                                <a className="item" href="https://www.chartjs.org/" target="_blank" rel="noopener noreferrer">Chart.js</a>
-                                <a className="item" href="https://github.com/jerairrest/react-chartjs-2" target="_blank" rel="noopener noreferrer">react-chartjs-2</a>
-                            </div>
-                        </div>
-                    </div>
-            </>
+
+                <div style={{textAlign: 'center', padding: '50px 0'}}>
+                        <h1>What is Topify?</h1>
+                        <p>Reveals your top Spotify tracks and artists via <a href='https://developer.spotify.com/documentation/web-api/' target="_blank" rel="noopener noreferrer">Spotify's Web API</a>.</p>
+                </div>
+            </div>
         )
     }
 
