@@ -8,7 +8,7 @@ const TopifyContent = ({myTop}) => {
         <div>
             <div className="ui grid" style={{height: '100vh'}}>
                 <div className="middle aligned column" style={{alignSelf: 'center'}}>
-                    <h1 style={{margin: '14px 0'}}>Topify.</h1>
+                    <h2 style={{margin: '14px 0'}}>Topify.</h2>
                     <div class="ui grid">
                         <div class="four wide column"><a href='#' onClick={() => {setShowcased(myTop[0]); setIndex(0)}} className={showcased === myTop[0] ? 'active' : null}>Artists<br />Lifetime</a></div>
                         <div class="four wide column"><a href='#' onClick={() => {setShowcased(myTop[1]); setIndex(0)}} className={showcased === myTop[1] ? 'active' : null}>Tracks<br />Lifetime</a></div>
@@ -23,7 +23,7 @@ const TopifyContent = ({myTop}) => {
                             />
                         </div>
                         <div class="eight wide column" style={{alignSelf: 'center'}}>
-                            <h1 className="h01">{showcased[index].name} // {index + 1}</h1>
+                            <h2 className="h01">{showcased[index].name} // {index + 1}</h2>
                             <p className="h00" style={{textTransform: 'capitalize'}}>{showcased === myTop[0] || showcased === myTop[2] ? showcased[index].genres[0] : showcased[index].artists[0].name}</p>
                             <a className="h00" href={showcased[index].uri}>
                                 Visit
@@ -43,7 +43,7 @@ const TopifyContent = ({myTop}) => {
                                 onClick={window.scrollTo(0, 0)}
                             />
                             <div className='overlay' onClick={() => setIndex(i)}>
-                                <div className='text'>{el.name} // {i + 1}</div>
+                                <div className='img-text'>{el.name} // {i + 1}</div>
                             </div>
                         </div>
                     </div>
