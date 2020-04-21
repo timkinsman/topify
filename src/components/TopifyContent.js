@@ -17,10 +17,13 @@ const TopifyContent = ({myTop}) => {
                     </div>
                     <div class="ui stackable grid">
                         <div class="eight wide column">
-                            <img
-                                alt={showcased[index].name}
-                                src={showcased === myTop[0] || showcased === myTop[2] ? showcased[index].images[0].url : showcased[index].album.images[0].url} 
-                            />
+                            <div className="wrapper">
+                                <img
+                                    className="image"
+                                    alt={showcased[index].name}
+                                    src={showcased === myTop[0] || showcased === myTop[2] ? showcased[index].images[0].url : showcased[index].album.images[0].url} 
+                                />
+                            </div>
                         </div>
                         <div class="eight wide column" style={{alignSelf: 'center'}}>
                             <h2 className="h01">{showcased[index].name} // {index + 1}</h2>
