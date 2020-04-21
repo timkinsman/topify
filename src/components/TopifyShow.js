@@ -38,32 +38,26 @@ const TopifyShow = ({token, onClickEvent}) => {
 
     if(me && myTopArtistsLifetime && myTopTracksLifeTime && myTopArtistsRecent && myTopTracksRecent){
         return (
-            <div style={{height: '100vh'}}>
-                <div className="ui icon fixed secondary menu" style={{background: '#fff'}}>
-                    <div className="item">
-                        <a className="item" href="https://github.com/timkinsman/topify" target="_blank" rel="noopener noreferrer">
-                            <i className="github large icon"></i>
-                        </a>
-                    </div>
+            <div>
+                <div className="ui fixed secondary menu" style={{background: '#fff'}}>
+                    <a className="item" href="https://github.com/timkinsman/topify" target="_blank" rel="noopener noreferrer">
+                        <i className="github large icon"></i>
+                    </a>
                     <div className="right menu">
-                        <a className="item" href={me.uri} target="_blank" rel="noopener noreferrer">{me.display_name}</a>
+                        <a className="item" href={me.uri}>{me.display_name}</a>
                         <a className="item" onClick={onClickEvent} href="/">Sign Out</a>
                     </div>
                 </div>
 
-                <div className="ui container" style={{textAlign: 'center', minHeight: '100vh', padding: '100px 0 100px 0'}}>
-                    <h1>Topify</h1>
+                <div className="ui container">
                     <TopifyContent
-                        AL={myTopArtistsLifetime}
-                        TL={myTopTracksLifeTime}
-                        AR={myTopArtistsRecent}
-                        TR={myTopTracksRecent}
+                        myTop={[myTopArtistsLifetime, myTopTracksLifeTime, myTopArtistsRecent, myTopTracksRecent]}
                     />
                 </div>
 
-                <div style={{textAlign: 'center', paddingBottom: '50px'}}>
+                <div style={{textAlign: 'center', padding: '50px 0'}}>
                         <h1>What is Topify?</h1>
-                        <p>its the greatest website of all time, alllll time</p>
+                        <p>Reveals your top Spotify tracks and artists via <a href='https://developer.spotify.com/documentation/web-api/' target="_blank" rel="noopener noreferrer">Spotify's Web API</a>.</p>
                 </div>
             </div>
         )

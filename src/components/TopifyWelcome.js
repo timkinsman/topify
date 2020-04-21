@@ -7,8 +7,8 @@ const TopifyWelcome = () => {
     return (
         <div className='ui grid' style={{height: '100vh'}}>
             <div className='middle aligned column' style={{textAlign: 'center'}}>
-                <h1>Topify</h1>
-                <a className='ui button' href={href}>Connect Spotify</a>
+                <h1>Topify.</h1>
+                <a href={href}>Connect Spotify</a>
             </div>
         </div>
     )
