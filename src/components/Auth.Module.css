@@ -1,5 +1,13 @@
+.auth-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+}
+
 .auth-title {
-    animation: fade 10s infinite;
+    animation: fade 5s infinite;
 }
 
 @keyframes fade {

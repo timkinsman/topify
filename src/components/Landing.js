@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {Dropdown, Icon, Menu} from 'semantic-ui-react'
 import SpotifyWebApi from 'spotify-web-api-js';
+
+import styles from "./Landing.module.css"
 
 import Content from './Content';
 
@@ -15,10 +16,6 @@ const Landing = ({token, onClickEvent}) => {
     spotifyApi.setAccessToken(token);
 
     useEffect(() => {
-        spotifyApi.getMe({}, function(err, data) {
-            if (err) console.error(err);
-            else setMe(data);
-        })
         spotifyApi.getMyTopArtists({limit: '20', time_range: 'medium_term'}, function(err, data) {
             if (err) console.error(err);
             else setMyTopArtistsLifetime(data.items);
@@ -37,32 +34,23 @@ const Landing = ({token, onClickEvent}) => {
         })
     }, [])
 
-    if(me && myTopArtistsLifetime && myTopTracksLifeTime && myTopArtistsRecent && myTopTracksRecent){
+    if(myTopArtistsLifetime && myTopTracksLifeTime && myTopArtistsRecent && myTopTracksRecent){
         return (
             <div>
-                <div className="ui fixed secondary menu" style={{background: '#fff'}}>
-                    <Menu.Item href='https://github.com/timkinsman/transparency/' target='_blank'>
-                        <Icon fitted link name='github' size='large' />
-                    </Menu.Item>
-                    <Menu.Menu position='right'>
-                    <Dropdown item text={me.display_name}>
-                        <Dropdown.Menu>
-                            <Dropdown.Item href={me.uri}>Profile</Dropdown.Item>
-                            <Dropdown.Item onClick={onClickEvent}>Sign Out</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                    </Menu.Menu>
+                <div className={styles["landing-nav"]}>
+                    <h3>Transparency.</h3>
+                    <a className={styles["landing-nav-right"]} onClick={onClickEvent}>Sign Out</a>
                 </div>
+                
+                <div className={styles["landing-outer-container"]}>
+                    <div className={styles["landing-inner-container"]}>
+                        <Content myTop={[myTopArtistsLifetime, myTopTracksLifeTime, myTopArtistsRecent, myTopTracksRecent]} />
 
-                <div className="ui container">
-                    <Content
-                        myTop={[myTopArtistsLifetime, myTopTracksLifeTime, myTopArtistsRecent, myTopTracksRecent]}
-                    />
-                </div>
-
-                <div style={{textAlign: 'center', padding: '50px 0'}}>
-                        <h2>What is Transparency?</h2>
-                        <p>Reveals your top Spotify tracks and artists via <a href='https://developer.spotify.com/documentation/web-api/' target="_blank" rel="noopener noreferrer">Spotify's Web API</a>.</p>
+                        <div className={styles["landing-whatis"]}>
+                            <h2>What is Transparency?</h2>
+                            <p>Reveals your top Spotify tracks and artists via <a href='https://developer.spotify.com/documentation/web-api/' target="_blank" rel="noopener noreferrer">Spotify's Web API</a>.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
