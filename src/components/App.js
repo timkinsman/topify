@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 
 import hash from "../hash";
-import TopifyShow from "./TopifyShow";
-import TopifyWelcome from "./TopifyWelcome";
+import Landing from "./Landing";
+import Auth from "./Auth";
 
 const App = () => {
   const [token, setToken] = useState();
@@ -35,10 +35,10 @@ const App = () => {
   }, []);
 
   if(token){
-    return <TopifyShow token={token} onClickEvent={() => {localStorage.removeItem("token"); setToken(null);}} />
+    return <Landing token={token} onClickEvent={() => {localStorage.removeItem("token"); setToken(null);}} />
   }
 
-  return <TopifyWelcome />
+  return <Auth />
 }
 
 export default App;

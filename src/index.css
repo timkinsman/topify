@@ -1,14 +1,27 @@
+@font-face {
+    font-family: "Moderat";
+    src: local("Moderat"),
+      url("./fonts/Moderat-Thin.ttf") format("truetype");
+    font-weight: normal;
+  }
+  
+
 html {
+    font-family: Moderat;
     scroll-behavior: smooth;
+    color: #000;
 }
 
 a {
-    color: #A0A0A0;
+    color: #000;
+    opacity: 0.4;
+    transition: opacity 1s;
 }
 
 a:hover {
-    color: #222222;
     cursor: pointer;
+    opacity: 1;
+    transition: opacity 1s;
 }
 
 h1 {
@@ -21,11 +34,7 @@ img {
 }
 
 p {
-    color: #A0A0A0;
-}
-
-.active {
-    color: #222222;
+    opacity: 0.4;
 }
   
 .image {

@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react';
 import {Dropdown, Icon, Menu} from 'semantic-ui-react'
 import SpotifyWebApi from 'spotify-web-api-js';
 
-import TopifyContent from './TopifyContent';
+import Content from './Content';
 
-const TopifyShow = ({token, onClickEvent}) => {
+const Landing = ({token, onClickEvent}) => {
     const [me, setMe] = useState();
     const [myTopArtistsLifetime, setMyTopArtistsLifetime] = useState();
     const [myTopTracksLifeTime, setMyTopTracksLifeTime] = useState();
@@ -19,11 +19,11 @@ const TopifyShow = ({token, onClickEvent}) => {
             if (err) console.error(err);
             else setMe(data);
         })
-        spotifyApi.getMyTopArtists({limit: '20', time_range: 'long_term'}, function(err, data) {
+        spotifyApi.getMyTopArtists({limit: '20', time_range: 'medium_term'}, function(err, data) {
             if (err) console.error(err);
             else setMyTopArtistsLifetime(data.items);
         })
-        spotifyApi.getMyTopTracks({limit: '20', time_range: 'long_term'}, function(err, data) {
+        spotifyApi.getMyTopTracks({limit: '20', time_range: 'medium_term'}, function(err, data) {
             if (err) console.error(err);
             else setMyTopTracksLifeTime(data.items);
         })
@@ -41,7 +41,7 @@ const TopifyShow = ({token, onClickEvent}) => {
         return (
             <div>
                 <div className="ui fixed secondary menu" style={{background: '#fff'}}>
-                    <Menu.Item href='https://github.com/timkinsman/topify/' target='_blank'>
+                    <Menu.Item href='https://github.com/timkinsman/transparency/' target='_blank'>
                         <Icon fitted link name='github' size='large' />
                     </Menu.Item>
                     <Menu.Menu position='right'>
@@ -55,13 +55,13 @@ const TopifyShow = ({token, onClickEvent}) => {
                 </div>
 
                 <div className="ui container">
-                    <TopifyContent
+                    <Content
                         myTop={[myTopArtistsLifetime, myTopTracksLifeTime, myTopArtistsRecent, myTopTracksRecent]}
                     />
                 </div>
 
                 <div style={{textAlign: 'center', padding: '50px 0'}}>
-                        <h2>What is Topify?</h2>
+                        <h2>What is Transparency?</h2>
                         <p>Reveals your top Spotify tracks and artists via <a href='https://developer.spotify.com/documentation/web-api/' target="_blank" rel="noopener noreferrer">Spotify's Web API</a>.</p>
                 </div>
             </div>
@@ -71,4 +71,4 @@ const TopifyShow = ({token, onClickEvent}) => {
     return <div className="ui active huge text loader">Loading</div>
 }
 
-export default TopifyShow;
+export default Landing;

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const TopifyContent = ({myTop}) => {
+const Content = ({myTop}) => {
     const [showcased, setShowcased] = useState(myTop[0]);
     const [index, setIndex] = useState(0)
 
@@ -8,12 +8,12 @@ const TopifyContent = ({myTop}) => {
         <div>
             <div className="ui grid" style={{height: '100vh'}}>
                 <div className="middle aligned column" style={{alignSelf: 'center'}}>
-                    <h2 style={{margin: '14px 0'}}>Topify.</h2>
+                    <h2 style={{margin: '14px 0'}}>Transparency.</h2>
                     <div class="ui grid">
-                        <div class="four wide column"><a href='#' onClick={() => {setShowcased(myTop[0]); setIndex(0)}} className={showcased === myTop[0] ? 'active' : null}>Artists<br />Lifetime</a></div>
-                        <div class="four wide column"><a href='#' onClick={() => {setShowcased(myTop[1]); setIndex(0)}} className={showcased === myTop[1] ? 'active' : null}>Tracks<br />Lifetime</a></div>
-                        <div class="four wide column"><a href='#' onClick={() => {setShowcased(myTop[2]); setIndex(0)}} className={showcased === myTop[2] ? 'active' : null}>Artists<br />Recent</a></div>
-                        <div class="four wide column"><a href='#' onClick={() => {setShowcased(myTop[3]); setIndex(0)}} className={showcased === myTop[3] ? 'active' : null}>Tracks<br />Recent</a></div>
+                        <div class="four wide column"><a href='#' onClick={() => {setShowcased(myTop[0]); setIndex(0)}} style={{opacity: showcased === myTop[0] ? '1' : '0.4'}}>Artists<br />Lifetime</a></div>
+                        <div class="four wide column"><a href='#' onClick={() => {setShowcased(myTop[1]); setIndex(0)}} style={{opacity: showcased === myTop[1] ? '1' : '0.4'}}>Tracks<br />Lifetime</a></div>
+                        <div class="four wide column"><a href='#' onClick={() => {setShowcased(myTop[2]); setIndex(0)}} style={{opacity: showcased === myTop[2] ? '1' : '0.4'}}>Artists<br />Recent</a></div>
+                        <div class="four wide column"><a href='#' onClick={() => {setShowcased(myTop[3]); setIndex(0)}} style={{opacity: showcased === myTop[3] ? '1' : '0.4'}}>Tracks<br />Recent</a></div>
                     </div>
                     <div class="ui stackable grid">
                         <div class="eight wide column">
@@ -56,4 +56,4 @@ const TopifyContent = ({myTop}) => {
     )
 }
 
-export default TopifyContent
+export default Content
