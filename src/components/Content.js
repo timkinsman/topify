@@ -10,7 +10,7 @@ const Content = ({myTop}) => {
     return(
         <React.Fragment>
             <div className={styles["content-cy-ur"]}>
-                <h2>cy ur.</h2>
+                <h2>see your.</h2>
 
                 <div className={styles["content"]}>
                     <div><a onClick={() => {setChoice(myTop[0]); setIndex(0); setTab("Artists")}} style={{opacity: choice === myTop[0] ? '1' : '0.4'}}>Artists<br />Lifetime</a></div>

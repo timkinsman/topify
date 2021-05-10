@@ -16,11 +16,11 @@ const Landing = ({token, onClickEvent}) => {
     spotifyApi.setAccessToken(token);
 
     useEffect(() => {
-        spotifyApi.getMyTopArtists({limit: '20', time_range: 'medium_term'}, function(err, data) {
+        spotifyApi.getMyTopArtists({limit: '20', time_range: 'long_term'}, function(err, data) {
             if (err) console.error(err);
             else setMyTopArtistsLifetime(data.items);
         })
-        spotifyApi.getMyTopTracks({limit: '20', time_range: 'medium_term'}, function(err, data) {
+        spotifyApi.getMyTopTracks({limit: '20', time_range: 'long_term'}, function(err, data) {
             if (err) console.error(err);
             else setMyTopTracksLifeTime(data.items);
         })
